@@ -1,5 +1,8 @@
 # An In-depth explanation of the PhpMyAdmin tables
 
+### Tables: Tables in PhpMyAdmin have columns and indexes. An example of a table is the accounts table.
+### Columns: Columns are columns in PhpMyAdmin tables that make the tables function for the server. An example of a column is accountID in the accounts table.
+
 ## Acccomments: This table displays all the account comments players have made on their profiles.
 - userID: Tells you what user ID made the comment.
   
@@ -39,7 +42,7 @@
   Example: youtube.com/GoogleDrive.)
 
 - twitter: The Twitter(X) account URL the user has linked to their profile. (Again it only shows you what to put after the / in twitter.com URL. 
-  Example twitter.com/discord.)
+  Example: twitter.com/discord.)
 
 - twitch: The Twitch account the user has linked to their profile. (This only tells you what to put after the / in twitch.tv URL. 
   Example: twitch.tv/epicgamer.)
@@ -235,7 +238,7 @@
 
 - requestedStars: The amount of stars requested when the level was uploaded.
 
-- extraString: This is a complicated topic to explain here but basically it is other objects and layers of objects and much more. 
+- extraString: This is a complicated topic to explain here but put simply, it is other objects and layers of objects and much more. 
   Here is a link to [the detailed explanation](https://github.com/Wyliemaster/gddocs/blob/master/docs/resources/client/level-components/capacity-string.md).
 
 - levelString: This is empty as I don't think it is used. (I will update this if it is used or was used.)
@@ -264,6 +267,7 @@
 - rateDate: The date the level was rated in unix timestamp form. (You can use an online converter to get the exact date.) It will be either the star or no star rate date.
 
 - starCoins: This tells you if the coins are verified or not. (0 = not verified coins; 1 = verified coins.)
+
   <mark style="color:red;">**DO NOT SET starCoins TO 2 OR HIGHER AS IT WILL BREAK YOUR LEVELS TAB!**</mark>
 
 - starFeatured: This indetifies whether the level is featured or not. (0 = not featured; 1 = featured.)
@@ -421,22 +425,315 @@
 
 - timestamp: This displays the date and time the action was issued on in unix timestamp format. (You can use an online converter to get exact date.)
 
-- value2: This displays other values, it can display the amount of orbs,diamonds or stars required for a quest, and more.
+- value2: This displays other values, it can display the amount of orbs,diamonds or stars required for a quest, the level ID's that are in a map pack and more.
+
+- value3: This column will display a level ID if the action was executed on a level, it displays the amount of stars a map pack will reward you with when you complete the map pack.
+
+- value4: This column can display the amount of secret coins and map pack will reward you with when it is completed and it displays a 1 when moderator action type 5 is executed.
+
+- value5: I have no idea what moderator action will add a value to this column.
+
+- value6: Another column that I am unsure of what will be displayed here.
+
+- account: The ID of the account that executed the action.
+
+- value7: This column displays the RGB colour code for a map pack's text.
+
+## Modipperms: This table is for creating special permissions for a role. (I am not 100% sure what the special permissions are.)
+
+- categoryID: The unique ID of the category.
+
+- actionFreeCopy: I am not sure if this does work because I have not got free copy (without hacks) when adding this to my role.
+
+## Modips: This table lists all the IP's of moderators and the moderators who have modipperms.
+
+- ID: This is a unique ID of the IP address of the moderator.
+
+- IP: This column displays the moderator's IP address.
+
+- accountID: The ID of the moderator's account.
+
+- modIPCategory: This will be the ID of the modipperms category you set.
+  (If you made a role that has modIPPerms and the value is set to the ID of the category, it will appear under the modips table.)
+
+## Quests: This table lists all the created quests in the GDPS and allows you to make quests.
+
+- ID: The unique ID of the quest.
+
+- type: The type of in-game item you need to collect. (1 = orbs; 2 = user coins; 3 = stars.)
+
+- amount: The amount of (type) the user needs to collect to complete the quest.
+
+- reward: This is the amount of diamonds you will receive for completing the quest.
+
+- name: The name of the quest.
+
+(Note: You will need a minimum of 3 quests for the quests to work in-game.)
+
+## Reports: This table lists any level's that a user has reported.
+
+- ID: The unique ID of the report.
+
+- levelID: The ID of the level the user reported.
+
+- hostname: The IP of the user who reported the level.
+
+## Roleassign: This table displays all the users who have a role added to them. You can also assign a role to a user here.
+
+- assignID: The unique ID of the role assign.
+
+- roleID: the ID of the role you want to assign.
+
+- accountID: The ID of the account you want to assign to a user.
+
+## Roles: This is the table that lists all the roles and this table allows you to create roles.
+
+- roleID: The unique ID of the role.
+
+- priority: This works like this: If you have a role that has a priority of 2 assigned to your user and you have a role with a priority of 1 assigned to your user, the role with the higher priority number will be the role that shows up on your profile.
+  It will also be the role that you have permissions from. (The other role with lower priority won't be in effect.)
+
+- roleName: The name of the role.
+
+- commandRate: This identifies whether the role gives permission to use the !rate command.
+  (0 = no permissions to use; 1 = permission to use.)
+
+- commandFeature: This identifies whether the role gives permission to use the !feature command.
+    (0 = No permissions to use; 1 = permission to use.)
+
+- commandEpic: This identifies whether the role gives permission to use the !epic command.
+    (0 = no permissions to use; 1 = permission to use.)
+
+- commandUnepic: This identifies whether the role gives permission to use the !unepic command.
+     (0 = no permissions to use; 1 = permissions to use;)
+
+- commandVerifyCoins: This identifies whether the role gives permission to use the !verifycoins command.
+    (0 = no permissions to use; 1 = permissions to use.)
+
+- commandDaily: This identifies whether the role gives permission to use the !daily command.
+    (0 = no permissions to use; 1 = permissions to use.)
+
+- commandWeekly: This identifies whether the role gives permission to use the !weekly command.
+    ( 0 = no permissions to use; 1 = permissions to use.)
+
+- commandDelete: This identifies whether the role gives permission to use the !delete command.
+    (0 = no permissions to use; 1 = permissions to use.)
+
+- commandSetacc: This identifies whether the role gives permission to use the !setacc command.
+    (0 = no permissions to use; 1 = permissions to use.)
+
+- commandRenameOwn: This is always 1 by default even without a role. This allows users to use the !rename command on their levels.
+
+- commandRenameAll: This identifies whether the role give permission to use the !rename command on any level.
+    (0 = no permissions to use; 1 = permissions to use.)
+
+- commandPassOwn: This is default set to 1 for users without a role even. This allows users to use the !pass command on their own levels.
+
+- commandPassAll: This identifies whether the role gives permission to use the !pass command on any level. 
+    (0 = no permissions to use; 1 = permissions to use.)
+
+- commandDescriptionOwn: This is default set to 1 for all users, even without a role. This allows users to use the !description command on their own levels.
+
+- commandDescriptionAll: This identifies whether the role gives permission to use the !description command on any level.
+    (0 = no permissions to use; 1 = permissions to use.)
+
+- commandUnlistOwn: This is default set to 1 for all users, even users without a role. This allows users to use the !unlist command on their own levels.
+
+- commandUnlistALll: This identifies whether the role gives permission to use the !unlist command on any level.
+    (0 = no permissions to use; 1 = permissions to use.)
+
+- commandShareCpOwn: This is default set to 1 for all users, even users without a role. This allows users to use the !sharecp command on their own levels.
+
+- commandShareCpAll: This identifies whether the role gives permission to use the !sharecp command on any level.
+    (0 = no permissions to use; 1 = permissions to use.)
+
+- commandSongOwn: This is default set to 1 for all users, even users without a role. This allows users to use the !song command on their own levels.
+
+- commandSongAll: This identifies whether the role gives permission to use the !song command on any level.
+    (0 = no permissions to use; 1 = permissions to use.)
+
+- profilecommandDiscord: I am not sure if this even works anymore.
+
+- actionRateDemon: This is the defualt rate button that all users have. It is default set to 1 for all users.
+
+- actionRateDifficulty: This is the default rate button that all users have. It is default set to 1 for all user.
+
+- actionRequestMod: This is the normal req button in settings. All users have permission to use this by default.
+
+- actionSuggestRating: This identifies whether the role gives you permission to use the blue star moderator button. If you made your role correctly and didn't want the role to rate levels, it will suggest a rating for a level and send it to             "suggestlist.php" in your tools page.
+  If you have !rate command permissions or just suggest rate permissions(given from GDPSFH webpanel) you can rate levels with this button.
+  (0 = no permissions to use it; 1 = permission to use it.)
+
+- actionDeleteComment: This identifies whether the role gives you permission to delete any comment.
+    (0 = no permission to delete; 1 = permission to delete.)
+
+- toolLeaderboardsBan: This identifies whether the role gives you permission to use leaderboardsban.php in your GDPS tools page.
+    (0 = no permission to use; 1 = permission to use.)
+
+- toolPackCreate: This identifies whether the role gives you permission to use packCreate.php in your Tools page.
+    (0 = no permission to use it; 1 = permission to use it.)
+
+- toolQuestsCreate: This identifies whether the role gives you permission to use addQuests.php in your tools page.
+    (0 = no permission to use; 1 = permission to use.)
+
+- toolModActions: This identifies whether the role gives you permission to use modActions.php in your tools page.
+    (0 = no permission to use; 1 = permission to use.)
+
+- toolSuggestList: This identifies whether the role gives you permission to use suggestList.php in your tools page.
+    (0 = no permission to use; 1 = permission to use.)
+
+- dashboardModTools: This identifies whether the role gives you permission to use the moderator tools on the dashboard (beta).
+    (0 = no permission to use; 1 = permission to use.)
+
+- modipCategory: This identifies whether the role gives you access to special permissions. 
+  (You put the category ID of the modip permission you created in modipperms.)
+
+- isDefault: This makes the role default to members.
+  (The permissions the role gives users will be default to any user.)
+
+- commentColor: This displays what colour the comments will be if you have this role. (It is in RGB color code)
+
+- modBadgeLevel: This is the level of the moderator badge.
+    (0 = no badge; 1 = Normal Moderator badge; 2 or higher = Elder Moderator badge.)
+
+## Songs: This table lists all the custom uploaded songs and the songs used in the GDPS.
+
+- ID: The unique ID of the song.
+
+- name: The name of the song that will appear in-game.
+
+- authorID: The unique ID of the author of the song. (Newgrounds author ID.)
+
+- size: The size of the song that will display when downloading the song and using it. (It won't always be the actual size of the song as the default is 6.69mb.)
+
+- download: The download link for the song that you download from in-game.
+
+- hash: unused
+
+- isDisabled: This identifies whether the song is availible to download or not. (0 = not disabled; 1 = disabled.)
+  It will return "song is not allowed for use" in-game if you download a song that has "isDisabled" set to 1.
+
+- levelsCount: The amount of uploaded levels that use this song.
+
+- reuploadTime: Supposed to display the time the song was uploaded in unix timestamp format. (It doesn't appear to work.)
+
+## Suggest: This table lists all levels moderators have used the suggest rate button on.(If they didn't rate the level using the button.)
+
+- ID: The unique ID of the suggest.
+
+- suggestBy: The account ID of the user who suggested to rate this level.
+
+- suggestLevelID: The ID of the level that was suggested by the user.
+
+- suggestDifficulty: This tells you what difficulty was suggested. ( 0 - N/A; 10 - Easy; 20 - Normal; 30 - Hard; 40 - Harder; 50 - Insane/Demon/Auto.)
+
+- suggestStars: The amount of stars (value) that were suggested. (Example: 7)
+
+- suggestFeatured: This identifies if the level was suggested for a feature or not. (0 = Suggested for a standard rate; 1 = suggested for feature.)
+
+- suggestAuto: This identifies if the level was suggested to be rated auto difficulty or not. (0 = not auto difficulty; 1 = auto difficulty.)
+
+- suggestDemon: This identifies if the level was suggested to be rated demon difficulty or not. (0 = not demon difficulty; 1 = demon difficulty.)
+
+- timestamp: This displays the time the level was suggested at in unix timestamp format. (You can use an online converter to find out the exact date.)
+  (**Note: Unless you set your role up correctly, the suggest table will be empty as normal moderators will be able to rate levels with the suggest rate button.**)
+
+## Users: This table lists all the users in the GDPS (registered accounts and green users.)
+
+- isRegistered: This identifies if the user has registered an account or not. (0 = not registered; 1 = registered account.)
+
+- userID: This is the unique ID of each user.
+
+- extID: This is the user's account ID, if they are registered.
+
+- userName: This is the users name.
+
+- stars: This is the amount of stars the user has.
+
+- demons: This is the amount of demons the user has completed.
+
+- icon: This is the icon the user is using. (Icons have unique ID's too.)
+
+- color1: This is the primary color of the user's icons. (colors also have unique ID's.)
+
+- color2: This is the secondary color of the user's icons. (colors have unique ID's.)
+
+- iconType: This is the type of icon that will appear behind the user's name when they comment and when you search up the user. (0 = cube; 1 = ship; 2 = ball; 3 = ufo; 4 = wave; 5 = robot; 6 = spider.)
+
+- coins: This is the amount of secret coins the user has collected.
+
+- userCoins: This is the amount of user coins the user has collected.
+
+- special: This is the trail the user has. (Trails have unique ID's.)
+
+- gameVersion: The version of the game the user is using. (21 is 2.1, 20 is 2.0, 19 is 1.9 and so on.)
+
+- secret: This is the HTTP request that was made [for more information check this documentation.](https://github.com/Wyliemaster/gddocs/blob/master/docs/reference/secrets.md)
+
+- accIcon: This is the ID of the icon the user is using.
+
+- accShip: This is the ID of the ship the user is using.
+
+- accBall: This is the ID of the ship the user is using.
+
+- accBird: This is the ID of the ufo the user is using. (The ufo was originally called the bird.)
+
+- accDart: This is the ID of the wave the user is using. (The wave was originally called the dart.)
+
+- accRobot: This is the ID of the robot the user is using.
+
+- accGlow: This is to identify if the user has glow arounf their icons. (0 = no glow; 1 = glow.)
+
+- creatorPoints: This is the amount of creator points the user has gained from rated levels.
+
+- IP: This is the IP address of the person who made the user.
+
+- lastPlayed: This is the date and time of the last time the person went into the GDPS, in unix timestamp format. (You can use an online converter to get the exact date and time.)
+
+- diamonds: This is the amount of diamonds the user has collected.
+
+- moons: Unused for 2.1. This is for 2.2.
+
+- orbs: This is the amount of orbs the user has collected.
+
+- completedLvls: This shows the amount of levels the user has completed.
+
+- accSpider: This is the unique ID of the user's spider. (I also don't know why accSpider is so far away from the other icons.)
+
+- accExplosion: This is the unique ID of the user's death effect.
+
+- chest1time: This is the date and time since the user opened the small chest.
+ (It is in unix timestamp format in which you can use an online converter to get the exact date.)
+
+- chest2time: This is the date and time since the user opened the big chest.
+  (It is in unix timestamp format in which you can use an online converter to get the exact date.)
+
+- chest1count: This is the amount of times the user has opened the small chest.
+
+- chest2count: This is the amount of times the user has opened the big chest.
+
+- isBanned: This identifies whether the user is leaderboard banned on the stars leaderboard on that account or not. (0 = not stars leaderboard banned; 1 = stars leaderboard banned.)
+
+- isCreatorBanned: This identifies whether the user is leaderboard banned on the creator points leaderboard on that account or not.
+  (0 = not creator leaderboard banned; 1 = creator leaderboard banned.)
+# Examples of using a table.
+
+An example with using a table and its columns would be this:
+
+Roles table: Click insert, set the permissions to 1 or 0, set the name and set the unique ID. Now click go.
+
+Now go to the roleassign table: click insert, set the unique assign ID, put in the account ID you want to assign the role to and now put the ID of the role you are going to assign.
+
+Now click go at the bottom of the site.
+
+I hope this guide helped you to understand PhpMyAdmin better.
+### Extra Information:
+
+If someone tells you to login to PMA, that means you must login to PhpMyAdmin.
+
+You do not need to know PHP to use PhpMyAdmin.
+
+Guide made by Nojnis, with help from Wyliemaster's gd-docs documentation, [Wyliemaster's GD documentation here](https://github.com/Wyliemaster/gddocs)
 
 
-
-  
-
-  
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-
+PS: I will update the information about the functions of columns I didn't know about when I find out.
