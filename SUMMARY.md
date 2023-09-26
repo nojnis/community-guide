@@ -5,6 +5,7 @@
 ## 🛠 In-Game Help
 
 * [Level Commands](in-game-help/level-commands.md)
+* [Remove Android Anticheat](in-game-help/Remove-Android-Anticheat.md)
 
 ## ❔ FAQ
 
@@ -20,6 +21,7 @@
 * [Create Roles](phpmyadmin/create-roles.md)
 * [Place roles](phpmyadmin/placing-roles.md)
 * [Place special moderator functions](phpmyadmin/create-modip.md)
+* [In-depth explanation of the PhpMyAdmin tables and columns](phpmyadmin/Detailed-explanation-of-phpmyadmin-tables-and-columns)
 
 ## 🗿 Miscellaneous Information
 
